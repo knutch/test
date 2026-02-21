@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fotoalbum mit Karte</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Mein Fotoalbum</h1>
+      <p>Erstelle Ordner und entdecke Fotos auf der Karte.</p>
+    </header>
+
+    <main class="layout">
+      <aside class="panel">
+        <h2>Ordner</h2>
+        <form id="folder-form">
+          <label for="folder-name">Neuer Ordner</label>
+          <div class="input-row">
+            <input id="folder-name" name="folder-name" type="text" required maxlength="40" placeholder="z. B. Urlaub 2026" />
+            <button type="submit">Anlegen</button>
+          </div>
+        </form>
+        <ul id="folder-list"></ul>
+      </aside>
+
+      <section class="panel content-panel">
+        <div class="toolbar">
+          <h2 id="active-folder-title">Kein Ordner ausgewählt</h2>
+          <label class="upload-label" for="photo-input">Fotos hinzufügen</label>
+          <input id="photo-input" type="file" accept="image/*" multiple />
+        </div>
+
+        <p id="message" role="status" aria-live="polite"></p>
+
+        <div id="album-grid" class="album-grid"></div>
+
+        <h3>Kartenansicht</h3>
+        <div id="map" aria-label="Karte mit Fotopositionen"></div>
+      </section>
+    </main>
+
+    <template id="photo-card-template">
+      <article class="photo-card">
+        <img alt="Vorschaubild" />
+        <div class="photo-card-content">
+          <strong class="photo-name"></strong>
+          <small class="photo-location"></small>
+        </div>
+      </article>
+    </template>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
